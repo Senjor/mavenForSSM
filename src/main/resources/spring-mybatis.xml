@@ -31,7 +31,17 @@
         <!-- 获取连接最大等待时间 -->
         <property name="maxWait" value="${maxWait}"></property>
     </bean>
-
+    
+    <!-- 
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+            1.dataSource  2.事务X   3.映射文件
+            <property name="dataSource" >
+                <ref bean="dataSource"/>
+            </property>
+  
+            <property name="mapperLocations" value="classpath:com/zhiyou/dao/*.xml"></property>
+        </bean> -->
+    
 
 	<bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 	    <property name="dataSource" ref="dataSource"></property>
@@ -40,6 +50,8 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.zhiyou.dao" />
     </bean>
+    
+    
     <bean id="transactionManager"
         class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />
